@@ -1,0 +1,32 @@
+{ // create 3 configurations for debugging using vs code, we will see this option from "Run and Debug" from the sidebar
+    "version": "0.2.0",
+    "compounds": [ // this is a compound task that executes both configurations Main and Renderer 
+      {
+        "name": "Main + renderer",
+        "configurations": ["Main", "Renderer"],
+        "stopAll": true
+      }
+    ],
+    "configurations": [
+      { // used to debug the renderer process
+        "name": "Renderer",
+        "port": 9222,
+        "request": "attach", // attach this to the main process
+        "type": "chrome", // because renderer process is a web process
+        "webRoot": "${workspaceFolder}"
+      },
+      { // used to start the main process and expose port 9222 for remote debugging, this is the port we will use to attach the debugger for the Renderer
+        "name": "Main",
+        "type": "node", // because the main process is a Node.js process
+        "request": "launch",
+        "cwd": "${workspaceFolder}",
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+        "windows": {
+          "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+        },
+        "args": [".", "--remote-debugging-port=9222"],
+        "outputCapture": "std",
+        "console": "integratedTerminal"
+      }
+    ]
+  }

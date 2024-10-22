@@ -64,6 +64,14 @@ Something fun: adding emoji in your code editor: Win+ or CTRL CMD Space
 
 Managing app's window lifecycle
 
+Debugging from VS Code (see file .vscode > launch.json)
+
+The executable runs the JavaScript entry point found in the main property of your package.json. This file controls Electron's main process, which runs an instance of Node.js and is responsible for your app's lifecycle, displaying native interfaces, performing privileged operations, and managing renderer processes.
+
+Renderer processes (or renderers for short) are responsible for displaying graphical content. You can load a web page into a renderer by pointing it to either a web address or a local HTML file. Renderers behave very similarly to regular web pages and have access to the same web APIs.
+
+If you want to debug your application using VS Code, you need to attach VS Code to both the main and renderer processes. Here is a sample configuration for you to run. Create a launch.json configuration in a new .vscode folder in your project
+
 # Criticism of Electron
 
 One common (and entirely correct) criticism of Electron-based apps is their footprint. An Electron app comes packed with its own unique, vendored copy of a web browser, and has to spin up an entirely separate web browser process when it’s launched. Electron apps can take hundreds of megabytes or more on disk, and their in-memory footprint is typically that big, too. And while modern hardware can generally handle the load, a bigger question arises: Isn’t there a better way to do this?
