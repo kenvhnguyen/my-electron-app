@@ -43,13 +43,22 @@ Your terminal should print out Hello from Electron 👋.
 
 Loading a web page into BrowserWindow
 
-In Electron, each window displays a web page that can be loaded either from a local HTML file or a remote web address.
+In Electron, each window displays a web page that can be loaded either from a local HTML file
+```shell script
+loadFile('index.html')
+```
+ or a remote web address:
+ ```shell script
+ .loadURL('https://github.com')
+ ```
 
 Replace the contents of your main.js file with the following code, explained in the code comments.
 
 At this point, running your Electron application's start command should successfully open a window that displays your web page!
 
 Each web page your app displays in a window will run in a separate process called a renderer process (or simply renderer for short). Renderer processes have access to the same JavaScript APIs and tooling you use for typical front-end web development, such as using webpack to bundle and minify your code or React to build your user interfaces.
+
+Adding emoji in your code editor: Win+ or CTRL CMD Space
 
 # Criticism of Electron
 

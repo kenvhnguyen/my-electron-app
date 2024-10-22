@@ -10,7 +10,7 @@ const createWindow = () => {
         height: 600
     })
 
-    window.loadFile('index.html')
+    window.loadURL('https://github.com')
 }
 
 // Calling your function when the app is ready
