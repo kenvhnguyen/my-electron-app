@@ -41,6 +41,18 @@ Your terminal should print out Hello from Electron 👋.
 
 # Create user interfaces with HTML and load that into a native window.
 
+Loading a web page into BrowserWindow
+
+In Electron, each window displays a web page that can be loaded either from a local HTML file or a remote web address.
+
+Replace the contents of your main.js file with the following code, explained in the code comments.
+
+At this point, running your Electron application's start command should successfully open a window that displays your web page!
+
+Each web page your app displays in a window will run in a separate process called a renderer process (or simply renderer for short). Renderer processes have access to the same JavaScript APIs and tooling you use for typical front-end web development, such as using webpack to bundle and minify your code or React to build your user interfaces.
+
+# Criticism of Electron
+
 One common (and entirely correct) criticism of Electron-based apps is their footprint. An Electron app comes packed with its own unique, vendored copy of a web browser, and has to spin up an entirely separate web browser process when it’s launched. Electron apps can take hundreds of megabytes or more on disk, and their in-memory footprint is typically that big, too. And while modern hardware can generally handle the load, a bigger question arises: Isn’t there a better way to do this?
 
 TAURI
