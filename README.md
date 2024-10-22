@@ -24,7 +24,22 @@ npm install electron --save-dev
 
 The .gitignore file specifies which files and directories to avoid tracking with Git. You should place a copy of GitHub's Node.js gitignore template into your project's root folder to avoid committing your project's node_modules folder.
 
+The main script you defined in package.json is the entry point of any Electron application. This script controls the main process, which runs in a Node.js environment and is responsible for controlling your app's lifecycle, displaying native interfaces, performing privileged operations, and managing renderer processes (more on that later).
 
+Before creating your first Electron app, you will first use a trivial script to ensure your main process entry point is configured correctly. Create a main.js file in the root folder of your project with a single line of code:
+
+``` shell script
+console.log('Hello from Electron 👋')
+```
+Because Electron's main process is a Node.js runtime, you can execute arbitrary Node.js code with the electron command (you can even use it as a REPL). To execute this script, add electron . to the start command in the scripts field of your package.json. This command will tell the Electron executable to look for the main script in the current directory and run it in dev mode.
+
+``` shell script
+npm run start
+```
+
+Your terminal should print out Hello from Electron 👋. 
+
+# Create user interfaces with HTML and load that into a native window.
 
 One common (and entirely correct) criticism of Electron-based apps is their footprint. An Electron app comes packed with its own unique, vendored copy of a web browser, and has to spin up an entirely separate web browser process when it’s launched. Electron apps can take hundreds of megabytes or more on disk, and their in-memory footprint is typically that big, too. And while modern hardware can generally handle the load, a bigger question arises: Isn’t there a better way to do this?
 
