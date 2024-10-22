@@ -16,6 +16,10 @@ const createWindow = () => {
 // Calling your function when the app is ready
 app.whenReady().then(() => {
     createWindow()
+
+    app.on('activate', () => {
+        if (BrowserWindow.getAllWindows().length === 0) createWindow() // activating app should open a new window
+    })
 })
 
 // Many of Electron's core modules are Node.js event emitters that adhere to Node's asynchronous event-driven architecture. 
@@ -30,4 +34,5 @@ app.whenReady().then(() => {
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit() // Implement this common behaviour on windows and linux: app quits when all windows are closed
+    // For macOS, app doesn't quit so we should listen for activate events to open a new window see above
 })
