@@ -10,7 +10,7 @@ const createWindow = () => {
         height: 600
     })
 
-    window.loadURL('https://github.com')
+    window.loadFile('index.html')
 }
 
 // Calling your function when the app is ready
@@ -27,3 +27,7 @@ app.whenReady().then(() => {
 // Note: You typically listen to Node.js events by using an emitter's .on function, like this:
 /// app.on('ready', () => { createWindow() })
 // However, Electron exposes app.whenReady() as a helper specifically for the ready event to avoid subtle pitfalls with directly listening to that event in particular. See electron/electron#21972 for details.
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') app.quit() // Implement this common behaviour on windows and linux: app quits when all windows are closed
+})

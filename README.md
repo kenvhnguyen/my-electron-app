@@ -1,9 +1,9 @@
 # my-electron-app
-Trying out building an electron app
+Trying out building an electron app following https://www.electronjs.org/docs/latest/tutorial/tutorial-first-app
 
 Visual Studio Code, Docker Desktop, Github Desktop Slack are all Electron apps
 
-Electron apps are scaffolded using npm, with the package.json file as an entry point. Start by creating a folder and initializing an npm package within it with npm init.
+Electron apps are setup using npm, with the package.json file as an entry point. Start by creating a folder and initializing an npm package within it with npm init.
 ```shell script
 npm init
 ```
@@ -18,6 +18,8 @@ Then, install Electron into your app's devDependencies, which is the list of ext
 Why is Electron a dev dependency of your Electron app :?
 This may seem counter-intuitive since your production code is running Electron APIs. However, packaged apps will come bundled with the Electron binary, eliminating the need to specify it as a production dependency.
 
+The Electron executable should be installed in your project's devDependencies and can be run in development mode using a script in your package.json file.
+
 ```shell script
 npm install electron --save-dev
 ```
@@ -26,7 +28,7 @@ The .gitignore file specifies which files and directories to avoid tracking with
 
 The main script you defined in package.json is the entry point of any Electron application. This script controls the main process, which runs in a Node.js environment and is responsible for controlling your app's lifecycle, displaying native interfaces, performing privileged operations, and managing renderer processes (more on that later).
 
-Before creating your first Electron app, you will first use a trivial script to ensure your main process entry point is configured correctly. Create a main.js file in the root folder of your project with a single line of code:
+Before creating your first Electron app, first use a trivial script to ensure your main process entry point is configured correctly. Create a main.js file in the root folder of your project with a single line of code:
 
 ``` shell script
 console.log('Hello from Electron 👋')
@@ -58,7 +60,9 @@ At this point, running your Electron application's start command should successf
 
 Each web page your app displays in a window will run in a separate process called a renderer process (or simply renderer for short). Renderer processes have access to the same JavaScript APIs and tooling you use for typical front-end web development, such as using webpack to bundle and minify your code or React to build your user interfaces.
 
-Adding emoji in your code editor: Win+ or CTRL CMD Space
+Something fun: adding emoji in your code editor: Win+ or CTRL CMD Space
+
+Managing app's window lifecycle
 
 # Criticism of Electron
 
