@@ -1,4 +1,4 @@
-{ // create 3 configurations for debugging using vs code, we will see this option from "Run and Debug" from the sidebar
+{ // create 3 configurations for debugging using vs code, we will see these options from "Run and Debug" from the sidebar
     "version": "0.2.0",
     "compounds": [ // this is a compound task that executes both configurations Main and Renderer 
       {
